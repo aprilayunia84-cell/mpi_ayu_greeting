@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space English - About Me and My Friends | Media Pembelajaran Kelas 7</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cosmic: {
+                            900: '#0b0d1b',
+                            800: '#131735',
+                            700: '#1d234d',
+                            accent: '#f59e0b',
+                            purple: '#8b5cf6',
+                            cyan: '#06b6d4',
+                            pink: '#ec4899'
+                        }
+                    },
+                    fontFamily: {
+                        fredoka: ['Fredoka', 'sans-serif'],
+                        nunito: ['Nunito', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #0b0d1b;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .font-heading {
+            font-family: 'Fredoka', cursive;
+        }
+
+        /* Background Stars & Nebulae FX */
+        .stars-bg {
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 40px 70px, #ffd700, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 90px 40px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 160px 120px, #a855f7, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 230px 190px, #38bdf8, rgba(0,0,0,0));
+            background-repeat: repeat;
+            background-size: 300px 300px;
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(3deg); }
+        }
+
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .animate-float-slow {
+            animation: float 7s ease-in-out infinite;
+        }
+
+        /* Pulse Glow */
+        @keyframes pulseGlow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.6)); }
+            50% { filter: drop-shadow(0 0 25px rgba(245, 158, 11, 0.9)); }
+        }
+
+        .glow-gold {
+            animation: pulseGlow 3s infinite;
+        }
+
+        /* Orbit Animation */
+        @keyframes spinSlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .animate-spin-slow {
+            animation: spinSlow 20s linear infinite;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0d1b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #8b5cf6;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f59e0b;
+        }
+
+        /* Card Hover Effects */
+        .cosmic-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(19, 23, 53, 0.75);
+            backdrop-filter: blur(12px);
+            border: 2px solid rgba(139, 92, 246, 0.3);
+        }
+
+        .cosmic-card:hover {
+            transform: translateY(-5px) scale(1.01);
+            border-color: rgba(245, 158, 11, 0.8);
+            box-shadow: 0 10px 25px -5px rgba(139, 92, 246, 0.4);
+        }
+
+        /* Touch Drag drop styles */
+        .drag-item {
+            cursor: grab;
+            touch-action: none;
+            user-select: none;
+        }
+        .drag-item:active {
+            cursor: grabbing;
+        }
+        .drop-zone.drag-over {
+            border-color: #f59e0b !important;
+            background-color: rgba(245, 158, 11, 0.15) !important;
+        }
+        
+        .selected-touch {
+            ring: 4px;
+            border-color: #f59e0b !important;
+            background-color: rgba(245, 158, 11, 0.2) !important;
+        }
+    </style>
+</head>
+<body class="stars-bg min-h-screen flex flex-col justify-between text-base">
+
+    <!-- HEADER / NAVIGATION BAR -->
+    <header class="sticky top-0 z-50 bg-cosmic-900/90 backdrop-blur-md border-b border-purple-500/30 px-4 py-3 shadow-lg">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
+            
+            <!-- Logo & Title -->
+            <div class="flex items-center gap-3 cursor-pointer" onclick="switchTab('home')">
+                <div class="relative flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-tr from-purple-600 to-amber-400 text-white shadow-md text-2xl animate-float">
+                    <i class="fa-solid fa-user-astronaut"></i>
+                    <span class="absolute -top-1 -right-1 flex h-3 w-3">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 w-3 bg-amber-500"></span>
+                    </span>
+                </div>
+                <div>
+                    <h1 class="text-xl md:text-2xl font-bold bg-gradient-to-r from-amber-400 via-purple-300 to-cyan-400 bg-clip-text text-transparent tracking-wide">
+                        ASTRO ENGLISH 7
+                    </h1>
+                    <p class="text-xs text-purple-300 font-semibold flex items-center gap-1">
+                        <i class="fa-solid fa-meteor text-amber-400"></i> Phase D • English for SMP Grade 7
+                    </p>
+                </div>
+            </div>
+
+            <!-- Navigation Menu -->
+            <nav class="w-full md:w-auto overflow-x-auto py-1">
+                <ul class="flex items-center justify-start md:justify-end space-x-2 min-w-max text-sm font-bold">
+                    <li>
+                        <button id="nav-home" onclick="switchTab('home')" class="nav-btn px-3.5 py-2 rounded-xl flex items-center gap-2 transition duration-200 bg-purple-600 text-white shadow-md">
+                            <i class="fa-solid fa-planet-ringed text-amber-300"></i> Home
+                        </button>
+                    </li>
+                    <li>
+                        <button id="nav-tujuan" onclick="switchTab('tujuan')" class="nav-btn px-3.5 py-2 rounded-xl flex items-center gap-2 transition duration-200 text-gray-300 hover:text-white hover:bg-cosmic-700">
+                            <i class="fa-solid fa-bullseye text-cyan-400"></i> Tujuan
+                        </button>
+                    </li>
+                    <li>
+                        <button id="nav-materi" onclick="switchTab('materi')" class="nav-btn px-3.5 py-2 rounded-xl flex items-center gap-2 transition duration-200 text-gray-300 hover:text-white hover:bg-cosmic-700">
+                            <i class="fa-solid fa-book-open-reader text-purple-400"></i> Materi
+                        </button>
+                    </li>
+                    <li>
+                        <button id="nav-kuis" onclick="switchTab('kuis')" class="nav-btn px-3.5 py-2 rounded-xl flex items-center gap-2 transition duration-200 text-gray-300 hover:text-white hover:bg-cosmic-700">
+                            <i class="fa-solid fa-rocket text-amber-400"></i> Kuis
+                        </button>
+                    </li>
+                    <li>
+                        <button id="nav-dragdrop" onclick="switchTab('dragdrop')" class="nav-btn px-3.5 py-2 rounded-xl flex items-center gap-2 transition duration-200 text-gray-300 hover:text-white hover:bg-cosmic-700">
+                            <i class="fa-solid fa-puzzle-piece text-pink-400"></i> Drag & Drop
+                        </button>
+                    </li>
+                    <li>
+                        <button id="nav-tentang" onclick="switchTab('tentang')" class="nav-btn px-3.5 py-2 rounded-xl flex items-center gap-2 transition duration-200 text-gray-300 hover:text-white hover:bg-cosmic-700">
+                            <i class="fa-solid fa-user-gear text-emerald-400"></i> Tentang
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="flex-grow max-w-7xl w-full mx-auto p-4 md:p-6 my-2">
+
+        <!-- ========================================== -->
+        <!-- 1. HOME TAB PAGE -->
+        <!-- ========================================== -->
+        <section id="tab-home" class="tab-content block space-y-8 animate-fadeIn">
+            <!-- Hero Banner -->
+            <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-cosmic-800 via-purple-900 to-cosmic-900 border-2 border-purple-500/40 p-6 md:p-12 shadow-2xl">
+                
+                <!-- Decorative Orbit Planet -->
+                <div class="absolute -right-12 -top-12 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute right-8 bottom-8 hidden lg:block animate-float">
+                    <div class="relative">
+                        <div class="w-48 h-48 rounded-full bg-gradient-to-tr from-cyan-600 via-purple-600 to-amber-400 p-1 shadow-2xl">
+                            <div class="w-full h-full bg-cosmic-900 rounded-full flex flex-col items-center justify-center text-center p-4">
+                                <i class="fa-solid fa-earth-americas text-6xl text-cyan-400 mb-2 animate-spin-slow"></i>
+                                <span class="font-heading font-bold text-amber-300 text-lg">English Space</span>
+                                <span class="text-xs text-purple-200">Exploring Greetings</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="max-w-2xl space-y-4 relative z-10">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-400/20 border border-amber-400/40 text-amber-300 text-xs font-bold uppercase tracking-wider">
+                        <i class="fa-solid fa-star"></i> Media Pembelajaran Interaktif Bahasa Inggris
+                    </div>
+                    
+                    <h2 class="text-3xl md:text-5xl font-extrabold font-heading leading-tight text-white">
+                        About Me & <span class="bg-gradient-to-r from-amber-400 via-pink-400 to-cyan-300 bg-clip-text text-transparent">My Friends</span> 🚀
+                    </h2>
+
+                    <p class="text-lg text-purple-200 leading-relaxed">
+                        Selamat datang Penjelajah Antariksa! Mari meluncur menembus galaksi pengetahuan untuk mempelajari <strong class="text-amber-300">Greeting</strong> (salam), <strong class="text-amber-300">Leave-taking</strong> (perpisahan), dan cara <strong class="text-amber-300">Perkenalan Diri & Teman</strong> dalam Bahasa Inggris!
+                    </p>
+
+                    <div class="pt-4 flex flex-wrap gap-4">
+                        <button onclick="switchTab('materi')" class="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-lg shadow-lg hover:shadow-amber-500/30 transition transform hover:-translate-y-1 flex items-center gap-3">
+                            <i class="fa-solid fa-rocket text-xl"></i> Mulai Penjelajahan Materi
+                        </button>
+                        <button onclick="switchTab('kuis')" class="px-6 py-3.5 rounded-2xl bg-cosmic-700/80 hover:bg-cosmic-700 text-white font-bold text-lg border border-purple-400/30 shadow-lg transition transform hover:-translate-y-1 flex items-center gap-3">
+                            <i class="fa-solid fa-gamepad text-cyan-400 text-xl"></i> Uji Kemampuan (Kuis)
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Features Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1 -->
+                <div onclick="switchTab('materi')" class="cosmic-card rounded-2xl p-6 cursor-pointer group">
+                    <div class="w-14 h-14 rounded-2xl bg-amber-500/20 text-amber-400 border border-amber-500/40 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-hand-wave"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-amber-300 font-heading mb-2">Greetings</h3>
+                    <p class="text-sm text-gray-300">Sapa kawan-kawanmu di luar angkasa dengan salam bahasa Inggris yang tepat!</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div onclick="switchTab('materi')" class="cosmic-card rounded-2xl p-6 cursor-pointer group">
+                    <div class="w-14 h-14 rounded-2xl bg-purple-500/20 text-purple-400 border border-purple-500/40 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-door-open"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-purple-300 font-heading mb-2">Leave-taking</h3>
+                    <p class="text-sm text-gray-300">Ungkapan salam berpamitan dan perpisahan saat misi antariksa selesai.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div onclick="switchTab('materi')" class="cosmic-card rounded-2xl p-6 cursor-pointer group">
+                    <div class="w-14 h-14 rounded-2xl bg-cyan-500/20 text-cyan-400 border border-cyan-500/40 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-id-card"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-cyan-300 font-heading mb-2">Self Introduction</h3>
+                    <p class="text-sm text-gray-300">Kenalkan namamu, umur, asal, dan hobi unikmu kepada seluruh antariksawan!</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div onclick="switchTab('materi')" class="cosmic-card rounded-2xl p-6 cursor-pointer group">
+                    <div class="w-14 h-14 rounded-2xl bg-pink-500/20 text-pink-400 border border-pink-500/40 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-pink-300 font-heading mb-2">Introducing Others</h3>
+                    <p class="text-sm text-gray-300">Perkenalkan sahabat terbaikmu dengan kata ganti (He/She/His/Her) yang benar.</p>
+                </div>
+            </div>
+
+            <!-- Welcome Developer Info Banner -->
+            <div class="cosmic-card rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-4 border-l-4 border-l-amber-400">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-2xl shrink-0">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg text-white">Media Pembelajaran Resmi Fase D Kelas 7</h4>
+                        <p class="text-sm text-purple-200">Dikembangkan oleh <span class="text-amber-300 font-semibold">Ayunia Aprilliyani</span> untuk pembelajaran interaktif dan menyenangkan.</p>
+                    </div>
+                </div>
+                <button onclick="playGreetingTTS('Hello space explorer! Welcome to English Class Grade 7!')" class="px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-sm flex items-center gap-2 shrink-0">
+                    <i class="fa-solid fa-volume-high"></i> Dengarkan Salam
+                </button>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- 2. TUJUAN PEMBELAJARAN TAB PAGE -->
+        <!-- ========================================== -->
+        <section id="tab-tujuan" class="tab-content hidden space-y-6 animate-fadeIn">
+            <div class="text-center max-w-3xl mx-auto space-y-2">
+                <div class="inline-block px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-300 text-xs font-bold uppercase">
+                    <i class="fa-solid fa-bullseye"></i> Target Misi Penjelajahan
+                </div>
+                <h2 class="text-3xl md:text-4xl font-extrabold font-heading text-white">Tujuan Pembelajaran</h2>
+                <p class="text-purple-200">Capaian Pembelajaran Bahasa Inggris Fase D - Kelas 7 SMP (Kurikulum Merdeka)</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+                <!-- Objective 1 -->
+                <div class="cosmic-card rounded-2xl p-6 relative overflow-hidden border-t-4 border-t-cyan-400">
+                    <div class="absolute -right-6 -bottom-6 text-8xl text-cyan-500/10 pointer-events-none">
+                        <i class="fa-solid fa-comments"></i>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-cyan-500/20 text-cyan-300 font-heading font-bold text-2xl flex items-center justify-center shrink-0">
+                            01
+                        </div>
+                        <div class="space-y-2">
+                            <h3 class="text-xl font-bold text-cyan-300 font-heading">Ungkapan Salam & Perpisahan</h3>
+                            <p class="text-gray-200 text-base leading-relaxed">
+                                Peserta didik mampu <strong>memahami dan mengidentifikasi</strong> ungkapan salam perjumpaan (<em>greetings</em>) dan perpisahan (<em>leave-taking</em>) dalam kehidupan sehari-hari secara tepat, baik formal maupun informal.
+                            </p>
+                            <div class="pt-2 flex flex-wrap gap-2">
+                                <span class="text-xs px-2.5 py-1 rounded-md bg-cosmic-700 text-cyan-200 border border-cyan-500/30"><i class="fa-solid fa-check"></i> Greetings</span>
+                                <span class="text-xs px-2.5 py-1 rounded-md bg-cosmic-700 text-cyan-200 border border-cyan-500/30"><i class="fa-solid fa-check"></i> Leave-taking</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Objective 2 -->
+                <div class="cosmic-card rounded-2xl p-6 relative overflow-hidden border-t-4 border-t-amber-400">
+                    <div class="absolute -right-6 -bottom-6 text-8xl text-amber-500/10 pointer-events-none">
+                        <i class="fa-solid fa-user-plus"></i>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-300 font-heading font-bold text-2xl flex items-center justify-center shrink-0">
+                            02
+                        </div>
+                        <div class="space-y-2">
+                            <h3 class="text-xl font-bold text-amber-300 font-heading">Perkenalan Diri & Orang Lain</h3>
+                            <p class="text-gray-200 text-base leading-relaxed">
+                                Peserta didik mampu <strong>memahami dan mengungkapkan</strong> informasi dasar perkenalan diri sendiri (<em>self introduction</em>) dan mengenalkan orang lain (<em>introducing others</em>) secara lisan maupun tulisan dengan tata bahasa yang benar.
+                            </p>
+                            <div class="pt-2 flex flex-wrap gap-2">
+                                <span class="text-xs px-2.5 py-1 rounded-md bg-cosmic-700 text-amber-200 border border-amber-500/30"><i class="fa-solid fa-check"></i> Self Intro</span>
+                                <span class="text-xs px-2.5 py-1 rounded-md bg-cosmic-700 text-amber-200 border border-amber-500/30"><i class="fa-solid fa-check"></i> Introducing Friends</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Target Student Checklist -->
+            <div class="cosmic-card rounded-2xl p-6 mt-6">
+                <h3 class="text-xl font-bold font-heading text-purple-300 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-list-check text-amber-400"></i> Indikator Keberhasilan Siswa (Checklist Misi)
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                    <div class="flex items-center gap-3 p-3 rounded-xl bg-cosmic-800/80 border border-purple-500/20">
+                        <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+                        <span>Dapat mengucapkan "Good morning/afternoon" sesuai waktu.</span>
+                    </div>
+                    <div class="flex items-center gap-3 p-3 rounded-xl bg-cosmic-800/80 border border-purple-500/20">
+                        <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+                        <span>Dapat merespons "How are you?" dengan benar.</span>
+                    </div>
+                    <div class="flex items-center gap-3 p-3 rounded-xl bg-cosmic-800/80 border border-purple-500/20">
+                        <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+                        <span>Dapat memperkenalkan nama, umur, dan hobi diri sendiri.</span>
+                    </div>
+                    <div class="flex items-center gap-3 p-3 rounded-xl bg-cosmic-800/80 border border-purple-500/20">
+                        <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+                        <span>Dapat mengenalkan teman menggunakan "This is..." & kata ganti.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- 3. MATERI PEMBELAJARAN TAB PAGE -->
+        <!-- ========================================== -->
+        <section id="tab-materi" class="tab-content hidden space-y-6 animate-fadeIn">
+            <!-- Material Sub Nav Buttons -->
+            <div class="flex flex-wrap justify-center gap-2 bg-cosmic-800/80 p-2 rounded-2xl border border-purple-500/30 max-w-3xl mx-auto">
+                <button onclick="showSubMateri('greetings')" id="subnav-greetings" class="submateri-btn px-4 py-2 rounded-xl text-sm font-bold bg-amber-500 text-slate-950 shadow">
+                    <i class="fa-solid fa-hand-sparkles"></i> 1. Greetings
+                </button>
+                <button onclick="showSubMateri('leavetaking')" id="subnav-leavetaking" class="submateri-btn px-4 py-2 rounded-xl text-sm font-bold text-gray-300 hover:bg-cosmic-700">
+                    <i class="fa-solid fa-door-open"></i> 2. Leave-Taking
+                </button>
+                <button onclick="showSubMateri('selfintro')" id="subnav-selfintro" class="submateri-btn px-4 py-2 rounded-xl text-sm font-bold text-gray-300 hover:bg-cosmic-700">
+                    <i class="fa-solid fa-user"></i> 3. Self Introduction
+                </button>
+                <button onclick="showSubMateri('othersintro')" id="subnav-othersintro" class="submateri-btn px-4 py-2 rounded-xl text-sm font-bold text-gray-300 hover:bg-cosmic-700">
+                    <i class="fa-solid fa-user-group"></i> 4. Introducing Others
+                </button>
+            </div>
+
+            <!-- SUB-MATERI 1: GREETINGS -->
+            <div id="sub-greetings" class="submateri-content block space-y-6">
+                <div class="cosmic-card rounded-2xl p-6 border-l-4 border-l-amber-400">
+                    <div class="flex justify-between items-start flex-wrap gap-2">
+                        <div>
+                            <h3 class="text-2xl font-bold font-heading text-amber-300">Greetings (Salam Perjumpaan)</h3>
+                            <p class="text-gray-300 text-sm">Ungkapan yang digunakan saat bertemu dengan seseorang.</p>
+                        </div>
+                        <span class="px-3 py-1 bg-amber-400/20 text-amber-300 font-bold rounded-lg text-xs">Topik 01</span>
+                    </div>
+
+                    <!-- Audio Helper Note -->
+                    <div class="mt-4 p-3 rounded-xl bg-purple-900/40 border border-purple-500/30 text-xs text-purple-200 flex items-center gap-2">
+                        <i class="fa-solid fa-circle-info text-amber-400 text-base"></i>
+                        <span>Klik ikon <i class="fa-solid fa-volume-high text-amber-400"></i> pada tabel untuk mendengarkan pengucapan kata dalam bahasa Inggris!</span>
+                    </div>
+
+                    <!-- Greetings Table -->
+                    <div class="overflow-x-auto mt-4">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-cosmic-700/80 text-amber-300 text-sm font-heading">
+                                    <th class="p-3 rounded-l-xl">Greeting (Ungkapan)</th>
+                                    <th class="p-3">Response (Jawaban)</th>
+                                    <th class="p-3">Konteks / Waktu</th>
+                                    <th class="p-3 rounded-r-xl text-center">Suara</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-purple-900/50 text-sm">
+                                <tr>
+                                    <td class="p-3 font-semibold text-white">Good morning</td>
+                                    <td class="p-3 text-emerald-300">Good morning</td>
+                                    <td class="p-3 text-purple-200">Selamat pagi (00.00 - 12.00)</td>
+                                    <td class="p-3 text-center">
+                                        <button onclick="playGreetingTTS('Good morning')" class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 hover:bg-amber-500 hover:text-slate-900 transition"><i class="fa-solid fa-volume-high"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-semibold text-white">Good afternoon</td>
+                                    <td class="p-3 text-emerald-300">Good afternoon</td>
+                                    <td class="p-3 text-purple-200">Selamat siang/sore (12.00 - 18.00)</td>
+                                    <td class="p-3 text-center">
+                                        <button onclick="playGreetingTTS('Good afternoon')" class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 hover:bg-amber-500 hover:text-slate-900 transition"><i class="fa-solid fa-volume-high"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-semibold text-white">Good evening</td>
+                                    <td class="p-3 text-emerald-300">Good evening</td>
+                                    <td class="p-3 text-purple-200">Selamat malam (18.00 - menjelang tidur)</td>
+                                    <td class="p-3 text-center">
+                                        <button onclick="playGreetingTTS('Good evening')" class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 hover:bg-amber-500 hover:text-slate-900 transition"><i class="fa-solid fa-volume-high"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-semibold text-white">How are you?</td>
+                                    <td class="p-3 text-emerald-300">I am fine, thank you / Very well</td>
+                                    <td class="p-3 text-purple-200">Menanyakan kabar</td>
+                                    <td class="p-3 text-center">
+                                        <button onclick="playGreetingTTS('How are you? I am fine, thank you!')" class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 hover:bg-amber-500 hover:text-slate-900 transition"><i class="fa-solid fa-volume-high"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-semibold text-white">How do you do?</td>
+                                    <td class="p-3 text-emerald-300">How do you do?</td>
+                                    <td class="p-3 text-purple-200">Salam pertama kali bertemu (Formal)</td>
+                                    <td class="p-3 text-center">
+                                        <button onclick="playGreetingTTS('How do you do?')" class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 hover:bg-amber-500 hover:text-slate-900 transition"><i class="fa-solid fa-volume-high"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Dialogue Example Box -->
+                    <div class="mt-6 p-4 rounded-xl bg-cosmic-800 border border-purple-500/30">
+                        <h4 class="font-bold text-amber-300 font-heading mb-2 flex items-center justify-between">
+                            <span><i class="fa-solid fa-comments"></i> Contoh Dialog Singkat:</span>
+                            <button onclick="playGreetingTTS('Hello Edo, Good morning! Good morning Siti, how are you? I am fine, thanks!')" class="text-xs px-3 py-1 bg-purple-600 rounded-lg hover:bg-purple-500 text-white flex items-center gap-1"><i class="fa-solid fa-play"></i> Putar Dialog</button>
+                        </h4>
+                        <div class="space-y-1 text-sm text-gray-200 italic">
+                            <p><strong class="text-cyan-300">Siti:</strong> "Hello Edo, good morning!"</p>
+                            <p><strong class="text-amber-300">Edo:</strong> "Good morning Siti, how are you?"</p>
+                            <p><strong class="text-cyan-300">Siti:</strong> "I am fine, thanks. How about you?"</p>
+                            <p><strong class="text-amber-300">Edo:</strong> "I am great! Ready for our space class!"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUB-MATERI 2: LEAVE-TAKING -->
+            <div id="sub-leavetaking" class="submateri-content hidden space-y-6">
+                <div class="cosmic-card rounded-2xl p-6 border-l-4 border-l-purple-400">
+                    <div class="flex justify-between items-start flex-wrap gap-2">
+                        <div>
+                            <h3 class="text-2xl font-bold font-heading text-purple-300">Leave-Taking (Salam Perpisahan)</h3>
+                            <p class="text-gray-300 text-sm">Ungkapan yang digunakan saat berpamitan atau berpisah.</p>
+                        </div>
+                        <span class="px-3 py-1 bg-purple-400/20 text-purple-300 font-bold rounded-lg text-xs">Topik 02</span>
+                    </div>
+
+                    <div class="overflow-x-auto mt-4">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-cosmic-700/80 text-purple-300 text-sm font-heading">
+                                    <th class="p-3 rounded-l-xl">Expression (Ungkapan)</th>
+                                    <th class="p-3">Response (Jawaban)</th>
+                                    <th class="p-3">Arti / Penggunaan</th>
+                                    <th class="p-3 rounded-r-xl text-center">Suara</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-purple-900/50 text-sm">
+                                <tr>
+                                    <td class="p-3 font-semibold text-white">Goodbye / Bye</td>
+                                    <td class="p-3 text-emerald-300">Goodbye / Bye-bye</td>
+                                    <td class="p-3 text-purple-200">Selamat tinggal</td>
+                                    <td class="p-3 text-center">
+                                        <button onclick="playGreetingTTS('Goodbye, bye bye')" class="w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 hover:bg-purple-500 hover:text-slate-900 transition"><i class="fa-solid fa-volume-high"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-semibold text-white">See you later / See you</td>
+                                    <td class="p-3 text-emerald-300">See you / See you too</td>
+                                    <td class="p-3 text-purple-200">Sampai jumpa lagi</td>
+                                    <td class="p-3 text-center">
+                                        <button onclick="playGreetingTTS('See you later!')" class="w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 hover:bg-purple-500 hover:text-slate-900 transition"><i class="fa-solid fa-volume-high"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-semibold text-white">Good night</td>
+                                    <td class="p-3 text-emerald-300">Good night / Sweet dreams</td>
+                                    <td class="p-3 text-purple-200">Selamat tidur / berpisah malam hari</td>
+                                    <td class="p-3 text-center">
+                                        <button onclick="playGreetingTTS('Good night, sweet dreams!')" class="w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 hover:bg-purple-500 hover:text-slate-900 transition"><i class="fa-solid fa-volume-high"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-semibold text-white">Take care</td>
+                                    <td class="p-3 text-emerald-300">You too</td>
+                                    <td class="p-3 text-purple-200">Hati-hati di jalan</td>
+                                    <td class="p-3 text-center">
+                                        <button onclick="playGreetingTTS('Take care, you too!')" class="w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 hover:bg-purple-500 hover:text-slate-900 transition"><i class="fa-solid fa-volume-high"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUB-MATERI 3: SELF INTRODUCTION -->
+            <div id="sub-selfintro" class="submateri-content hidden space-y-6">
+                <div class="cosmic-card rounded-2xl p-6 border-l-4 border-l-cyan-400">
+                    <div class="flex justify-between items-start flex-wrap gap-2">
+                        <div>
+                            <h3 class="text-2xl font-bold font-heading text-cyan-300">Self Introduction (Perkenalan Diri)</h3>
+                            <p class="text-gray-300 text-sm">Pola kalimat untuk memperkenalkan diri sendiri secara lengkap.</p>
+                        </div>
+                        <span class="px-3 py-1 bg-cyan-400/20 text-cyan-300 font-bold rounded-lg text-xs">Topik 03</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                        <div class="p-4 rounded-xl bg-cosmic-800 border border-cyan-500/30 space-y-2">
+                            <h4 class="font-bold text-cyan-300 font-heading"><i class="fa-solid fa-key"></i> Unsur Informasi Penting:</h4>
+                            <ul class="text-sm space-y-2 text-gray-200">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-circle-dot text-cyan-400 text-xs"></i> <strong>Greeting:</strong> Hello / Hi / Good morning</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-circle-dot text-cyan-400 text-xs"></i> <strong>Name:</strong> My name is... / I am...</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-circle-dot text-cyan-400 text-xs"></i> <strong>Age:</strong> I am 12 years old.</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-circle-dot text-cyan-400 text-xs"></i> <strong>Origin/Address:</strong> I live in Jakarta. / I am from Indonesia.</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-circle-dot text-cyan-400 text-xs"></i> <strong>Hobby:</strong> My hobby is reading books.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Example Card with TTS -->
+                        <div class="p-4 rounded-xl bg-gradient-to-br from-purple-900/60 to-cosmic-800 border border-purple-500/30 relative">
+                            <span class="absolute top-3 right-3 text-xs bg-amber-400 text-slate-900 font-bold px-2 py-0.5 rounded">Teks Kartu</span>
+                            <h4 class="font-bold text-amber-300 font-heading mb-2">Contoh Perkenalan Diri:</h4>
+                            <p id="selfintro-text" class="text-sm text-purple-100 italic leading-relaxed">
+                                "Hello everyone! Let me introduce myself. My name is Galang. I am 13 years old. I live in South Tangerang. My hobby is playing football. Nice to meet you all!"
+                            </p>
+                            <button onclick="playGreetingTTS(document.getElementById('selfintro-text').innerText)" class="mt-4 px-4 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm flex items-center gap-2">
+                                <i class="fa-solid fa-volume-high"></i> Dengarkan Perkenalan Galang
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUB-MATERI 4: INTRODUCING OTHERS -->
+            <div id="sub-othersintro" class="submateri-content hidden space-y-6">
+                <div class="cosmic-card rounded-2xl p-6 border-l-4 border-l-pink-400">
+                    <div class="flex justify-between items-start flex-wrap gap-2">
+                        <div>
+                            <h3 class="text-2xl font-bold font-heading text-pink-300">Introducing Others (Mengenalkan Orang Lain)</h3>
+                            <p class="text-gray-300 text-sm">Cara mengenalkan teman atau orang lain kepada seseorang.</p>
+                        </div>
+                        <span class="px-3 py-1 bg-pink-400/20 text-pink-300 font-bold rounded-lg text-xs">Topik 04</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                        <div class="p-4 rounded-xl bg-cosmic-800 border border-pink-500/30 space-y-3">
+                            <h4 class="font-bold text-pink-300 font-heading"><i class="fa-solid fa-wand-magic-sparkles"></i> Ungkapan Utama:</h4>
+                            <div class="space-y-2 text-sm text-gray-200">
+                                <div class="p-2 bg-cosmic-900 rounded-lg border border-purple-500/20">
+                                    <p class="font-bold text-amber-300">"This is my friend, [Nama]"</p>
+                                    <p class="text-xs text-gray-400">Ini adalah temanku, [Nama]</p>
+                                </div>
+                                <div class="p-2 bg-cosmic-900 rounded-lg border border-purple-500/20">
+                                    <p class="font-bold text-amber-300">"I'd like you to meet [Nama]"</p>
+                                    <p class="text-xs text-gray-400">Saya ingin mengenalkanmu pada [Nama]</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-cosmic-800 border border-pink-500/30 space-y-3">
+                            <h4 class="font-bold text-pink-300 font-heading"><i class="fa-solid fa-user-tag"></i> Ingat Kata Ganti Pronouns!</h4>
+                            <div class="grid grid-cols-2 gap-2 text-xs">
+                                <div class="p-2 bg-purple-900/40 rounded-lg">
+                                    <span class="font-bold text-cyan-300 block">Laki-laki (Boy):</span>
+                                    <span>Subject: <strong>He</strong></span><br>
+                                    <span>Possessive: <strong>His</strong> name...</span>
+                                </div>
+                                <div class="p-2 bg-pink-900/40 rounded-lg">
+                                    <span class="font-bold text-pink-300 block">Perempuan (Girl):</span>
+                                    <span>Subject: <strong>She</strong></span><br>
+                                    <span>Possessive: <strong>Her</strong> name...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Example Conversation Card -->
+                    <div class="mt-4 p-4 rounded-xl bg-cosmic-800 border border-pink-500/30">
+                        <h4 class="font-bold text-pink-300 font-heading mb-2 flex items-center justify-between">
+                            <span><i class="fa-solid fa-users-between-lines"></i> Contoh Mengenalkan Teman:</span>
+                            <button onclick="playGreetingTTS('Hi Andre, this is my friend, Monita. She is a new student in our class. Nice to meet you Monita!')" class="text-xs px-3 py-1 bg-pink-600 hover:bg-pink-500 text-white rounded-lg flex items-center gap-1"><i class="fa-solid fa-play"></i> Putar Suara</button>
+                        </h4>
+                        <p class="text-sm italic text-purple-100">
+                            <strong>Bima:</strong> "Hi Andre, this is my classmate, Monita. She is from Bali."<br>
+                            <strong>Andre:</strong> "Hi Monita, nice to meet you!"<br>
+                            <strong>Monita:</strong> "Nice to meet you too, Andre!"
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- 4. KUIS INTERAKTIF TAB PAGE -->
+        <!-- ========================================== -->
+        <section id="tab-kuis" class="tab-content hidden space-y-6 animate-fadeIn">
+            <!-- Quiz Container -->
+            <div class="max-w-3xl mx-auto cosmic-card rounded-3xl p-6 md:p-8 border-2 border-amber-400/50 relative">
+                
+                <!-- Quiz Header & Rocket Progress -->
+                <div class="space-y-4 pb-6 border-b border-purple-500/30">
+                    <div class="flex items-center justify-between flex-wrap gap-2">
+                        <div>
+                            <span class="px-3 py-1 rounded-full bg-amber-400/20 text-amber-300 font-bold text-xs uppercase tracking-wider">
+                                <i class="fa-solid fa-rocket"></i> Space Quiz Challenge
+                            </span>
+                            <h2 class="text-2xl md:text-3xl font-extrabold font-heading text-white mt-1">Uji Pemahaman Bahasa Inggris</h2>
+                        </div>
+                        <div class="text-right">
+                            <span id="quiz-score-badge" class="px-4 py-1.5 rounded-xl bg-purple-600 text-amber-300 font-bold text-sm border border-amber-400/30">
+                                Skor: <span id="quiz-current-score">0</span> / 100
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Rocket Progress Bar -->
+                    <div class="relative pt-4">
+                        <div class="flex justify-between text-xs text-purple-300 font-bold mb-1">
+                            <span>Soal <span id="quiz-question-num">1</span> dari <span id="quiz-total-num">5</span></span>
+                            <span id="quiz-progress-percent">20%</span>
+                        </div>
+                        <div class="w-full bg-cosmic-900 h-4 rounded-full overflow-hidden p-0.5 border border-purple-500/30 relative">
+                            <div id="quiz-progress-bar" class="bg-gradient-to-r from-amber-500 via-purple-500 to-cyan-400 h-full rounded-full transition-all duration-500" style="width: 20%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quiz Card Body (Active Question) -->
+                <div id="quiz-active-box" class="py-6 space-y-6">
+                    <div class="space-y-2">
+                        <span id="quiz-category-tag" class="text-xs text-cyan-400 font-bold uppercase tracking-wider"><i class="fa-solid fa-tag"></i> Greetings</span>
+                        <h3 id="quiz-question-text" class="text-xl md:text-2xl font-bold text-white leading-snug">
+                            Loading question...
+                        </h3>
+                    </div>
+
+                    <!-- Options Grid -->
+                    <div id="quiz-options-container" class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <!-- Dynamic Options rendered via JS -->
+                    </div>
+
+                    <!-- Feedback Banner -->
+                    <div id="quiz-feedback" class="hidden p-4 rounded-2xl border transition-all duration-300">
+                        <div class="flex items-start gap-3">
+                            <div id="quiz-feedback-icon" class="text-2xl"></div>
+                            <div>
+                                <h4 id="quiz-feedback-title" class="font-bold text-base font-heading"></h4>
+                                <p id="quiz-feedback-desc" class="text-sm mt-0.5"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Next Question Button -->
+                    <div class="flex justify-end pt-2">
+                        <button id="quiz-next-btn" onclick="nextQuizQuestion()" class="hidden px-6 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-base shadow-lg transition flex items-center gap-2">
+                            Lanjut Soal Berikutnya <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Quiz Result Screen (Hidden by Default) -->
+                <div id="quiz-result-box" class="hidden py-8 text-center space-y-6">
+                    <div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-tr from-amber-400 to-purple-600 flex items-center justify-center text-5xl text-white shadow-2xl animate-bounce">
+                        <i id="quiz-result-icon" class="fa-solid fa-trophy"></i>
+                    </div>
+
+                    <div class="space-y-2">
+                        <h3 class="text-3xl font-extrabold font-heading text-amber-300">Misi Selesai Explorer!</h3>
+                        <p class="text-purple-200">Berikut adalah hasil evaluasi kuis Bahasa Inggris kamu:</p>
+                    </div>
+
+                    <!-- Score Card -->
+                    <div class="inline-block bg-cosmic-800 border-2 border-amber-400/50 rounded-2xl p-6 min-w-[250px]">
+                        <span class="text-sm text-gray-300 uppercase tracking-widest font-bold">Skor Akhir Kamu</span>
+                        <div id="quiz-final-score" class="text-5xl font-black font-heading text-amber-400 my-2">100</div>
+                        <div id="quiz-star-rating" class="text-amber-400 text-2xl space-x-1">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+
+                    <p id="quiz-final-message" class="text-lg font-semibold text-cyan-300 max-w-md mx-auto">
+                        Luar biasa! Kamu menguasai materi perkenalan dan salam dengan sempurna!
+                    </p>
+
+                    <div class="flex justify-center gap-4 pt-4">
+                        <button onclick="restartQuiz()" class="px-6 py-3 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold flex items-center gap-2">
+                            <i class="fa-solid fa-rotate-right"></i> Coba Lagi
+                        </button>
+                        <button onclick="switchTab('dragdrop')" class="px-6 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold flex items-center gap-2">
+                            <i class="fa-solid fa-puzzle-piece"></i> Main Game Drag & Drop
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- 5. DRAG AND DROP GAME TAB PAGE -->
+        <!-- ========================================== -->
+        <section id="tab-dragdrop" class="tab-content hidden space-y-6 animate-fadeIn">
+            <div class="text-center max-w-3xl mx-auto space-y-2">
+                <span class="px-3 py-1 rounded-full bg-pink-500/20 text-pink-300 font-bold text-xs uppercase tracking-wider">
+                    <i class="fa-solid fa-puzzle-piece"></i> Game Interaktif
+                </span>
+                <h2 class="text-3xl md:text-4xl font-extrabold font-heading text-white">Match & Connect Expressions</h2>
+                <p class="text-purple-200">Pasangkan ungkapan salam/perkenalan di sebelah kiri dengan respon yang cocok di sebelah kanan!</p>
+            </div>
+
+            <div class="cosmic-card rounded-3xl p-6 md:p-8 border-2 border-purple-500/40 max-w-4xl mx-auto space-y-6">
+                <!-- Instruction Box -->
+                <div class="p-3 rounded-xl bg-purple-900/40 border border-purple-500/30 text-xs md:text-sm text-purple-200 flex items-center justify-between gap-2">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-circle-info text-amber-400 text-lg"></i>
+                        <span><strong>Petunjuk:</strong> Klik/sentuh satu kartu ungkapan, lalu klik/sentuh kotaknya di kolom sebelah kanan untuk memasangkannya!</span>
+                    </div>
+                    <button onclick="resetDragDropGame()" class="px-3 py-1.5 rounded-lg bg-cosmic-700 hover:bg-cosmic-600 text-amber-300 font-bold text-xs shrink-0 flex items-center gap-1">
+                        <i class="fa-solid fa-arrow-rotate-left"></i> Reset Game
+                    </button>
+                </div>
+
+                <!-- Game Container Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+                    
+                    <!-- Left Column: Source Items -->
+                    <div class="space-y-3">
+                        <h3 class="font-bold font-heading text-amber-300 flex items-center gap-2 text-lg">
+                            <i class="fa-solid fa-comment-dots"></i> Ungkapan / Pertanyaan:
+                        </h3>
+                        <div id="drag-source-container" class="space-y-3">
+                            <!-- Dynamic rendering of sources -->
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Target Drop Zones -->
+                    <div class="space-y-3">
+                        <h3 class="font-bold font-heading text-cyan-300 flex items-center gap-2 text-lg">
+                            <i class="fa-solid fa-reply"></i> Pasangan Respon yang Cocok:
+                        </h3>
+                        <div id="drag-target-container" class="space-y-3">
+                            <!-- Dynamic rendering of targets -->
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Check Result Button & Score -->
+                <div class="pt-6 border-t border-purple-500/30 flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div id="dragdrop-status" class="text-sm font-bold text-amber-300">
+                        Pasangkan semua kartu terlebih dahulu!
+                    </div>
+                    <button onclick="checkDragDropResults()" class="w-full md:w-auto px-8 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-extrabold text-base shadow-lg transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-circle-check"></i> Periksa Jawaban Saya
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- 6. TENTANG TAB PAGE (DEVELOPER INFO) -->
+        <!-- ========================================== -->
+        <section id="tab-tentang" class="tab-content hidden space-y-6 animate-fadeIn">
+            <div class="max-w-4xl mx-auto cosmic-card rounded-3xl p-6 md:p-10 border-2 border-emerald-500/40 relative overflow-hidden">
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                    
+                    <!-- Profile Avatar Card -->
+                    <div class="flex flex-col items-center text-center space-y-4 md:border-r border-purple-500/30 md:pr-8">
+                        <div class="relative">
+                            <div class="w-36 h-36 rounded-full bg-gradient-to-tr from-emerald-400 via-purple-500 to-amber-400 p-1.5 shadow-2xl animate-float">
+                                <div class="w-full h-full bg-cosmic-900 rounded-full flex items-center justify-center text-6xl text-emerald-400">
+                                    <i class="fa-solid fa-user-graduate"></i>
+                                </div>
+                            </div>
+                            <span class="absolute bottom-1 right-1 w-8 h-8 rounded-full bg-emerald-500 text-slate-950 flex items-center justify-center text-base font-bold shadow">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                        </div>
+
+                        <div>
+                            <h3 class="text-2xl font-bold font-heading text-white">Ayunia Aprilliyani</h3>
+                            <p class="text-sm text-emerald-300 font-semibold mt-0.5">Pengembang Media Pembelajaran</p>
+                            <p class="text-xs text-purple-200 mt-1">Guru Bahasa Inggris SMP</p>
+                        </div>
+
+                        <div class="flex gap-2">
+                            <span class="px-3 py-1 rounded-full bg-purple-900/60 text-purple-200 text-xs border border-purple-500/30">
+                                Phase D • Grade 7
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Developer Meta Info & App Tech -->
+                    <div class="md:col-span-2 space-y-6">
+                        <div>
+                            <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 font-bold text-xs uppercase tracking-wider">
+                                Informasi Media Pembelajaran
+                            </span>
+                            <h2 class="text-2xl md:text-3xl font-extrabold font-heading text-amber-300 mt-2">
+                                Space English Interactive Media
+                            </h2>
+                            <p class="text-gray-300 text-sm mt-2 leading-relaxed">
+                                Media pembelajaran web berbasis kurikulum merdeka ini dirancang khusus untuk memfasilitasi siswa SMP Kelas 7 dalam memahami materi awal <strong class="text-amber-300">About Me and My Friends</strong>. Dilengkapi dengan audio pelafalan berbasis AI Text-to-Speech, kuis interaktif, dan permainan pencocokan ungkapan.
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                            <div class="p-3 rounded-xl bg-cosmic-800 border border-purple-500/20 space-y-1">
+                                <span class="text-purple-400 font-bold block"><i class="fa-solid fa-book"></i> Mata Pelajaran:</span>
+                                <span class="text-white font-semibold">Bahasa Inggris (English)</span>
+                            </div>
+                            <div class="p-3 rounded-xl bg-cosmic-800 border border-purple-500/20 space-y-1">
+                                <span class="text-amber-400 font-bold block"><i class="fa-solid fa-layer-group"></i> Fase / Kelas:</span>
+                                <span class="text-white font-semibold">Fase D / Kelas VII (7) SMP</span>
+                            </div>
+                            <div class="p-3 rounded-xl bg-cosmic-800 border border-purple-500/20 space-y-1">
+                                <span class="text-cyan-400 font-bold block"><i class="fa-solid fa-bullseye"></i> Pokok Bahasan:</span>
+                                <span class="text-white font-semibold">Greetings, Leave-taking, Introduction</span>
+                            </div>
+                            <div class="p-3 rounded-xl bg-cosmic-800 border border-purple-500/20 space-y-1">
+                                <span class="text-pink-400 font-bold block"><i class="fa-solid fa-code"></i> Teknologi Website:</span>
+                                <span class="text-white font-semibold">HTML5, Tailwind CSS, JS, Web Speech API</span>
+                            </div>
+                        </div>
+
+                        <!-- Developer Note Message Box -->
+                        <div class="p-4 rounded-xl bg-gradient-to-r from-purple-900/50 to-cosmic-800 border border-purple-500/30">
+                            <h4 class="font-bold text-amber-300 text-sm font-heading flex items-center gap-2">
+                                <i class="fa-solid fa-quote-left text-purple-400"></i> Catatan Pengembang:
+                            </h4>
+                            <p class="text-xs text-purple-100 italic mt-1">
+                                "Semoga media pembelajaran ini membantu para siswa SMP Kelas 7 untuk belajar Bahasa Inggris dengan lebih interaktif, menyenangkan, dan bersemangat seperti menjelajahi angkasa raya!"
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-cosmic-900 border-t border-purple-500/30 py-4 px-4 text-center text-xs text-purple-300">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+            <div>
+                &copy; 2026 <strong>Space English Grade 7</strong> • Dikembangkan oleh <span class="text-amber-400 font-semibold">Ayunia Aprilliyani</span>
+            </div>
+            <div class="flex items-center gap-3 text-gray-400">
+                <span><i class="fa-solid fa-rocket text-amber-400"></i> SMP Phase D</span>
+                <span>•</span>
+                <span><i class="fa-solid fa-heart text-pink-500"></i> Learning With Joy</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        /* ========================================== */
+        /* TAB NAVIGATION LOGIC                       */
+        /* ========================================== */
+        function switchTab(tabId) {
+            // Hide all tabs
+            const allTabs = document.querySelectorAll('.tab-content');
+            allTabs.forEach(tab => tab.classList.add('hidden'));
+
+            // Reset navbar active styling
+            const navButtons = document.querySelectorAll('.nav-btn');
+            navButtons.forEach(btn => {
+                btn.classList.remove('bg-purple-600', 'text-white', 'shadow-md');
+                btn.classList.add('text-gray-300', 'hover:text-white', 'hover:bg-cosmic-700');
+            });
+
+            // Show selected tab
+            const targetTab = document.getElementById(`tab-${tabId}`);
+            if (targetTab) {
+                targetTab.classList.remove('hidden');
+            }
+
+            // Highlight active navbar button
+            const activeBtn = document.getElementById(`nav-${tabId}`);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-purple-600', 'text-white', 'shadow-md');
+                activeBtn.classList.remove('text-gray-300', 'hover:text-white', 'hover:bg-cosmic-700');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        /* ========================================== */
+        /* SUB-MATERI TAB SWITCHER                    */
+        /* ========================================== */
+        function showSubMateri(subId) {
+            const allSub = document.querySelectorAll('.submateri-content');
+            allSub.forEach(sub => sub.classList.add('hidden'));
+
+            const allBtns = document.querySelectorAll('.submateri-btn');
+            allBtns.forEach(btn => {
+                btn.classList.remove('bg-amber-500', 'text-slate-950', 'shadow');
+                btn.classList.add('text-gray-300', 'hover:bg-cosmic-700');
+            });
+
+            const targetSub = document.getElementById(`sub-${subId}`);
+            if (targetSub) {
+                targetSub.classList.remove('hidden');
+            }
+
+            const activeBtn = document.getElementById(`subnav-${subId}`);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-amber-500', 'text-slate-950', 'shadow');
+                activeBtn.classList.remove('text-gray-300', 'hover:bg-cosmic-700');
+            }
+        }
+
+        /* ========================================== */
+        /* TEXT TO SPEECH (TTS) AUDIO SYNTHESIS       */
+        /* ========================================== */
+        function playGreetingTTS(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel(); // Stop ongoing speech
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.9; // Slightly slower for junior high students
+                utterance.pitch = 1.0;
+                window.speechSynthesis.speak(utterance);
+            } else {
+                showToast("Browser Anda tidak mendukung fitur audio Web Speech.");
+            }
+        }
+
+        /* ========================================== */
+        /* INTERACTIVE QUIZ ENGINE                    */
+        /* ========================================== */
+        const quizQuestions = [
+            {
+                id: 1,
+                category: "Greetings",
+                question: "Siti bertemu gurunya pada pukul 07.00 pagi di gerbang sekolah. Salam (greeting) yang paling tepat diucapkan Siti adalah...",
+                options: [
+                    "Good night, Teacher!",
+                    "Good morning, Teacher!",
+                    "Good afternoon, Teacher!",
+                    "Goodbye, Teacher!"
+                ],
+                correct: 1,
+                explanation: "Good morning digunakan untuk memberikan salam di pagi hari (sebelum pukul 12.00 siang)."
+            },
+            {
+                id: 2,
+                category: "Greetings & Response",
+                question: "Edo: 'How do you do, Galang?'<br>Galang: '...' <br>Jawaban yang tepat untuk melengkapi percakapan di atas adalah...",
+                options: [
+                    "I am fine, thank you.",
+                    "Good night!",
+                    "How do you do?",
+                    "See you later!"
+                ],
+                correct: 2,
+                explanation: "Ungkapan 'How do you do?' digunakan saat pertama kali bertemu seseorang, dan direspon dengan ucapan yang sama: 'How do you do?'."
+            },
+            {
+                id: 3,
+                category: "Self Introduction",
+                question: "Made ingin mengenalkan umurnya dalam bahasa Inggris. Kalimat yang benar adalah...",
+                options: [
+                    "I live in Bali.",
+                    "My hobby is playing football.",
+                    "I am 13 years old.",
+                    "Nice to meet you."
+                ],
+                correct: 2,
+                explanation: "'I am 13 years old' artinya 'Saya berumur 13 tahun'."
+            },
+            {
+                id: 4,
+                category: "Introducing Others",
+                question: "Bima mengenalkan teman perempuannya bernama Monita kepada Andre. <br>Bima: 'Andre, this is Monita. ... is a new student in our class.'",
+                options: [
+                    "He",
+                    "She",
+                    "His",
+                    "Her"
+                ],
+                correct: 1,
+                explanation: "Monita adalah perempuan, sehingga kata ganti subjek yang tepat adalah 'She'."
+            },
+            {
+                id: 5,
+                category: "Leave-taking",
+                question: "Sebelum pulang dari laboratorium IPA pada sore hari, Galang berpamitan pada kawan-kawannya: 'See you tomorrow!'. Respon kawannya adalah...",
+                options: [
+                    "Good morning!",
+                    "See you too!",
+                    "How do you do?",
+                    "My name is Galang."
+                ],
+                correct: 1,
+                explanation: "Respon untuk 'See you tomorrow' (sampai jumpa besok) adalah 'See you' atau 'See you too'."
+            }
+        ];
+
+        let currentQuizIndex = 0;
+        let quizScore = 0;
+        let selectedOption = null;
+
+        function loadQuizQuestion() {
+            const q = quizQuestions[currentQuizIndex];
+            selectedOption = null;
+
+            document.getElementById('quiz-question-num').innerText = currentQuizIndex + 1;
+            document.getElementById('quiz-total-num').innerText = quizQuestions.length;
+            
+            const progressPercent = Math.round(((currentQuizIndex + 1) / quizQuestions.length) * 100);
+            document.getElementById('quiz-progress-percent').innerText = `${progressPercent}%`;
+            document.getElementById('quiz-progress-bar').style.width = `${progressPercent}%`;
+
+            document.getElementById('quiz-category-tag').innerHTML = `<i class="fa-solid fa-tag"></i> ${q.category}`;
+            document.getElementById('quiz-question-text').innerHTML = q.question;
+
+            // Reset Feedback & Next Btn
+            const feedbackEl = document.getElementById('quiz-feedback');
+            feedbackEl.classList.add('hidden');
+            document.getElementById('quiz-next-btn').classList.add('hidden');
+
+            // Render Options
+            const container = document.getElementById('quiz-options-container');
+            container.innerHTML = '';
+
+            q.options.forEach((opt, idx) => {
+                const optBtn = document.createElement('button');
+                optBtn.className = `w-full text-left p-4 rounded-2xl border-2 border-purple-500/30 bg-cosmic-800 hover:bg-cosmic-700 hover:border-amber-400 font-semibold text-white transition flex items-center justify-between group`;
+                optBtn.onclick = () => selectQuizAnswer(idx, optBtn);
+                optBtn.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-xl bg-purple-900/60 border border-purple-400/30 flex items-center justify-center text-amber-300 font-bold group-hover:bg-amber-400 group-hover:text-slate-900 transition">
+                            ${String.fromCharCode(65 + idx)}
+                        </span>
+                        <span class="text-base">${opt}</span>
+                    </div>
+                    <i class="fa-regular fa-circle text-purple-400 group-hover:text-amber-400"></i>
+                `;
+                container.appendChild(optBtn);
+            });
+        }
+
+        function selectQuizAnswer(selectedIndex, buttonEl) {
+            if (selectedOption !== null) return; // Prevent multi click
+
+            selectedOption = selectedIndex;
+            const q = quizQuestions[currentQuizIndex];
+            const isCorrect = selectedIndex === q.correct;
+
+            const allOptBtns = document.getElementById('quiz-options-container').children;
+
+            if (isCorrect) {
+                quizScore += 20; // 5 questions * 20 = 100 max
+                document.getElementById('quiz-current-score').innerText = quizScore;
+                
+                buttonEl.classList.remove('bg-cosmic-800', 'border-purple-500/30');
+                buttonEl.classList.add('bg-emerald-900/60', 'border-emerald-400', 'text-emerald-200');
+                buttonEl.querySelector('.fa-regular').className = 'fa-solid fa-circle-check text-emerald-400 text-xl';
+
+                showQuizFeedback(true, "Jawaban Kamu Tepat Sekali! 🎉", q.explanation);
+                playBeepSound(600, 0.1);
+            } else {
+                buttonEl.classList.remove('bg-cosmic-800', 'border-purple-500/30');
+                buttonEl.classList.add('bg-rose-900/60', 'border-rose-400', 'text-rose-200');
+                buttonEl.querySelector('.fa-regular').className = 'fa-solid fa-circle-xmark text-rose-400 text-xl';
+
+                // Highlight correct answer
+                const correctBtn = allOptBtns[q.correct];
+                correctBtn.classList.add('bg-emerald-900/40', 'border-emerald-500/60');
+
+                showQuizFeedback(false, "Belum Tepat, Explorer! 🚀", q.explanation);
+                playBeepSound(250, 0.2);
+            }
+
+            // Disable all options
+            for (let btn of allOptBtns) {
+                btn.onclick = null;
+                btn.classList.remove('hover:bg-cosmic-700', 'hover:border-amber-400');
+            }
+
+            // Show Next Button
+            document.getElementById('quiz-next-btn').classList.remove('hidden');
+        }
+
+        function showQuizFeedback(isCorrect, title, desc) {
+            const fb = document.getElementById('quiz-feedback');
+            const icon = document.getElementById('quiz-feedback-icon');
+            const titleEl = document.getElementById('quiz-feedback-title');
+            const descEl = document.getElementById('quiz-feedback-desc');
+
+            fb.classList.remove('hidden', 'bg-emerald-950/80', 'border-emerald-500/50', 'bg-rose-950/80', 'border-rose-500/50');
+
+            if (isCorrect) {
+                fb.classList.add('bg-emerald-950/80', 'border-emerald-500/50', 'text-emerald-200');
+                icon.innerHTML = '<i class="fa-solid fa-face-smile-beam text-emerald-400"></i>';
+            } else {
+                fb.classList.add('bg-rose-950/80', 'border-rose-500/50', 'text-rose-200');
+                icon.innerHTML = '<i class="fa-solid fa-face-flushed text-rose-400"></i>';
+            }
+
+            titleEl.innerText = title;
+            descEl.innerText = desc;
+        }
+
+        function nextQuizQuestion() {
+            currentQuizIndex++;
+            if (currentQuizIndex < quizQuestions.length) {
+                loadQuizQuestion();
+            } else {
+                showQuizResult();
+            }
+        }
+
+        function showQuizResult() {
+            document.getElementById('quiz-active-box').classList.add('hidden');
+            const resultBox = document.getElementById('quiz-result-box');
+            resultBox.classList.remove('hidden');
+
+            document.getElementById('quiz-final-score').innerText = quizScore;
+
+            const ratingEl = document.getElementById('quiz-star-rating');
+            const msgEl = document.getElementById('quiz-final-message');
+
+            if (quizScore >= 80) {
+                ratingEl.innerHTML = '<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>';
+                msgEl.innerText = "Luar biasa! Kamu adalah Penjelajah Antariksa Sejati yang menguasai Bahasa Inggris!";
+            } else if (quizScore >= 60) {
+                ratingEl.innerHTML = '<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>';
+                msgEl.innerText = "Bagus sekali! Kamu sudah memahami sebagian besar materi. Tingkatkan lagi!";
+            } else {
+                ratingEl.innerHTML = '<i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>';
+                msgEl.innerText = "Jangan menyerah! Pelajari kembali materi Greetings & Introduction lalu coba lagi!";
+            }
+        }
+
+        function restartQuiz() {
+            currentQuizIndex = 0;
+            quizScore = 0;
+            document.getElementById('quiz-current-score').innerText = '0';
+            document.getElementById('quiz-result-box').classList.add('hidden');
+            document.getElementById('quiz-active-box').classList.remove('hidden');
+            loadQuizQuestion();
+        }
+
+        /* Web Audio API Sound Synthesizer for Quiz Effects */
+        function playBeepSound(freq, duration) {
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = 'sine';
+                osc.frequency.value = freq;
+                gain.gain.setValueAtTime(0.1, ctx.currentTime);
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start();
+                osc.stop(ctx.currentTime + duration);
+            } catch (e) {
+                // AudioContext not supported or restricted
+            }
+        }
+
+        /* ========================================== */
+        /* DRAG AND DROP MATCHING GAME ENGINE          */
+        /* ========================================== */
+        const dragItemsData = [
+            { id: 'item-1', text: "Good morning!", matchId: 'target-1', matchText: "Good morning!" },
+            { id: 'item-2', text: "How are you?", matchId: 'target-2', matchText: "I am fine, thank you." },
+            { id: 'item-3', text: "Nice to meet you", matchId: 'target-3', matchText: "Nice to meet you, too." },
+            { id: 'item-4', text: "What is your name?", matchId: 'target-4', matchText: "My name is Galang." },
+            { id: 'item-5', text: "See you later!", matchId: 'target-5', matchText: "See you!" }
+        ];
+
+        let selectedSourceId = null;
+        let matchesMap = {}; // targetId -> sourceId
+
+        function initDragDropGame() {
+            const sourceContainer = document.getElementById('drag-source-container');
+            const targetContainer = document.getElementById('drag-target-container');
+
+            sourceContainer.innerHTML = '';
+            targetContainer.innerHTML = '';
+            matchesMap = {};
+            selectedSourceId = null;
+
+            // Shuffle sources
+            const shuffledSources = [...dragItemsData].sort(() => Math.random() - 0.5);
+            // Shuffle targets
+            const shuffledTargets = [...dragItemsData].sort(() => Math.random() - 0.5);
+
+            shuffledSources.forEach(item => {
+                const srcCard = document.createElement('div');
+                srcCard.id = `src-${item.id}`;
+                srcCard.className = `p-4 rounded-xl bg-cosmic-800 border-2 border-amber-400/40 text-amber-300 font-bold text-sm cursor-pointer hover:bg-cosmic-700 transition flex items-center justify-between select-none`;
+                srcCard.onclick = () => selectSourceForMatch(item.id);
+                srcCard.innerHTML = `
+                    <span><i class="fa-solid fa-comment text-amber-400 mr-2"></i> "${item.text}"</span>
+                    <i id="badge-src-${item.id}" class="fa-regular fa-circle text-gray-500"></i>
+                `;
+                sourceContainer.appendChild(srcCard);
+            });
+
+            shuffledTargets.forEach(target => {
+                const tgtCard = document.createElement('div');
+                tgtCard.id = `tgt-${target.matchId}`;
+                tgtCard.className = `p-4 rounded-xl bg-cosmic-900 border-2 border-dashed border-cyan-500/40 text-cyan-200 text-sm cursor-pointer hover:border-cyan-400 transition flex flex-col gap-1 select-none`;
+                tgtCard.onclick = () => placeMatchOnTarget(target.matchId);
+                tgtCard.innerHTML = `
+                    <div class="text-xs text-cyan-400 font-semibold"><i class="fa-solid fa-bullseye"></i> Target Respon:</div>
+                    <div class="font-bold text-white">"${target.matchText}"</div>
+                    <div id="matched-label-${target.matchId}" class="text-xs text-amber-300 italic hidden">
+                        Dipasangkan dengan: <span class="val font-bold"></span>
+                    </div>
+                `;
+                targetContainer.appendChild(tgtCard);
+            });
+
+            document.getElementById('dragdrop-status').innerText = "Klik ungkapan kiri, lalu klik respon kanan yang sesuai!";
+        }
+
+        function selectSourceForMatch(itemId) {
+            // Reset previous highlights on source cards
+            dragItemsData.forEach(item => {
+                const el = document.getElementById(`src-${item.id}`);
+                if (el) el.classList.remove('ring-4', 'ring-amber-400', 'bg-amber-500/20');
+            });
+
+            selectedSourceId = itemId;
+            const activeEl = document.getElementById(`src-${itemId}`);
+            if (activeEl) {
+                activeEl.classList.add('ring-4', 'ring-amber-400', 'bg-amber-500/20');
+            }
+
+            document.getElementById('dragdrop-status').innerText = `Terpilih: "${dragItemsData.find(i=>i.id===itemId).text}". Sekarang klik kotak respon di kanan!`;
+        }
+
+        function placeMatchOnTarget(matchId) {
+            if (!selectedSourceId) {
+                showToast("Silakan klik ungkapan di sebelah kiri terlebih dahulu!");
+                return;
+            }
+
+            const itemObj = dragItemsData.find(i => i.id === selectedSourceId);
+            
+            // Register match
+            matchesMap[matchId] = selectedSourceId;
+
+            // Update UI on Target Card
+            const tgtCard = document.getElementById(`tgt-${matchId}`);
+            tgtCard.classList.remove('border-dashed', 'border-cyan-500/40');
+            tgtCard.classList.add('border-solid', 'border-purple-400', 'bg-cosmic-800');
+
+            const label = document.getElementById(`matched-label-${matchId}`);
+            label.classList.remove('hidden');
+            label.querySelector('.val').innerText = itemObj.text;
+
+            // Mark source as matched
+            const srcCard = document.getElementById(`src-${selectedSourceId}`);
+            srcCard.classList.remove('ring-4', 'ring-amber-400', 'bg-amber-500/20');
+            srcCard.classList.add('opacity-80', 'bg-cosmic-900');
+            document.getElementById(`badge-src-${selectedSourceId}`).className = 'fa-solid fa-check-circle text-emerald-400';
+
+            selectedSourceId = null;
+            document.getElementById('dragdrop-status').innerText = "Pasangan tersimpan! Lanjutkan memasangkan sisanya.";
+        }
+
+        function checkDragDropResults() {
+            const keys = Object.keys(matchesMap);
+            if (keys.length < dragItemsData.length) {
+                showToast("Harap pasangkan semua 5 ungkapan terlebih dahulu!");
+                return;
+            }
+
+            let correctCount = 0;
+            dragItemsData.forEach(item => {
+                if (matchesMap[item.matchId] === item.id) {
+                    correctCount++;
+                    const tgtCard = document.getElementById(`tgt-${item.matchId}`);
+                    tgtCard.classList.add('border-emerald-400', 'bg-emerald-950/40');
+                } else {
+                    const tgtCard = document.getElementById(`tgt-${item.matchId}`);
+                    tgtCard.classList.add('border-rose-500', 'bg-rose-950/40');
+                }
+            });
+
+            if (correctCount === dragItemsData.length) {
+                document.getElementById('dragdrop-status').innerHTML = `<span class="text-emerald-400 text-lg"><i class="fa-solid fa-trophy"></i> Sempurna! Semua 5 pasangan benar! 🎉</span>`;
+                playBeepSound(700, 0.3);
+            } else {
+                document.getElementById('dragdrop-status').innerHTML = `<span class="text-amber-400"><i class="fa-solid fa-triangle-exclamation"></i> Kamu mendapat ${correctCount} dari ${dragItemsData.length} benar. Coba teliti kembali!</span>`;
+                playBeepSound(300, 0.3);
+            }
+        }
+
+        function resetDragDropGame() {
+            initDragDropGame();
+        }
+
+        /* Simple Custom Notification Message (Replacing alert) */
+        function showToast(msg) {
+            const toast = document.createElement('div');
+            toast.className = 'fixed bottom-6 right-6 z-50 px-5 py-3 rounded-2xl bg-amber-500 text-slate-950 font-bold text-sm shadow-2xl flex items-center gap-2 animate-bounce';
+            toast.innerHTML = `<i class="fa-solid fa-bell"></i> <span>${msg}</span>`;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 3500);
+        }
+
+        window.onload = function() {
+            // Load initial quiz and drag-drop components
+            loadQuizQuestion();
+            initDragDropGame();
+            console.log("Space English Interactive App Loaded. Developer: Ayunia Aprilliyani");
+        };
+    </script>
+</body>
+</html>
